@@ -1,60 +1,74 @@
-# task-frontend
-# TaskFrontend
+# Task Frontend 🚀
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
+Web app desarrollado con angular version 17 para la gestión de tareas.
+La web app se despliega automaticmaente en Firebase Hosting.
+El proceso de despliegue se realiza mediante entrega continua CI/CD con Github Actions.
 
-## Development server
+Tecnologías utilizadas
 
-To start a local development server, run:
+- Angular 17
+- TypeScript
+- Angular Material
+- Firebase Hosting
+- GitHub Actions 
+- Jest para pruebas unitarias
+- Node.js 18
 
-```bash
-ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Estructura del proyecto
 
-## Code scaffolding
+src/
+ ├── app/
+ │   ├── core/        # aqui se encuentran los servicios, guards e interceptores
+ │   ├── features/    # aqui se encuentran los componentes de de autenticacion y gestion de tareas
+ │   ├── layout/      # layout estructural compartido en cada pagina
+ │   ├── shared/      # componentes y utileria compartida reutilizable
+ │   └── app.routes.ts
+ ├── environments/
+ └── styles.scss
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Pruebas unitarias
 
-```bash
-ng generate component component-name
-```
+Este proyecto web utiliza Jest como framework de pruebas unitarias
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Comando para ejecutar las pruebas de manera completa
+npm run test
 
-```bash
-ng generate --help
-```
+**Para ejecutar las pruebas unitarias tambien se puede instalar la extension Jest Runner.
 
-## Building
+Instalacion de dependencias
+- Las dependencias del proyecto se instalan mediante el comando "npm install"
+Ejecucion del proyecto
+- Para ejecutar el proyecto localmente usa el siguiente comando "ng serve -o"   
+  - el flag -o en el comando es para que el navegador se ejecute automaticamente
+- El puerto de ejecucion del proyecto de manera local es el 4200 de manera que para acceder desde el navegador al entorno local 
+accedemos a la siguiente ruta: http://localhost:4200
 
-To build the project run:
+Build de produccion
+- El comando para realizar el build es el siguiente "npm run build"
 
-```bash
-ng build
-```
+Despliegue (CI/CD)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+El proyecto cuenta con despliegue automático a Firebase Hosting mediante GitHub Actions.
 
-## Running unit tests
+Flujo de despliegue
+1. git push
+   
+2. GitHub Actions
+   
+3. Build Angular
+   
+4. Deploy a Firebase Hosting
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Requisitos de despliegue a firebase:
 
-```bash
-ng test
-```
+El proyecto en firebase debe estar configurado previamente 
+Tener listo un Secreto llamado: FIREBASE_TOKEN configurado en GitHub Actions
 
-## Running end-to-end tests
+Hosting:
+La aplicacion web se encuentra desplegada en Firebase Hosting y para acceder a ella se utiliza la siguiente url:
+- https://atom-project-1ac29.web.app/
 
-For end-to-end (e2e) testing, run:
+Autor: 
+Cornelio de Wilso Leal Tut
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

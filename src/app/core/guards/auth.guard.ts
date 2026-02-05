@@ -1,27 +1,27 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
 import { isTokenExpired } from '../utils/token.util';
+
+/**
+ * authGuard
+ * Description: Guard to validate if the jwt token exists in local storage and has not expired; otherwise, redirect to the login form.
+ * @date: 2026-02-05
+ * @author: Cornelio Leal
+ * @returns true if the user is authenticated; otherwise false
+ */
 export const authGuard: CanActivateFn = () => {
   const router = inject(Router);
-
-  // Buscar token
   const token = localStorage.getItem("token");
 
-  // Si NO hay token → Login
   if (!token) {
     router.navigate(['/auth/login']);
     return false;
   }
 
   if (isTokenExpired(token)) {
-
-    console.warn("Token expirado. Cerrando sesión...");
-
     localStorage.removeItem("token");
-
     router.navigate(['/auth/login']);
     return false;
   }
-  // Si hay token → permitir acceso
   return true;
 };
