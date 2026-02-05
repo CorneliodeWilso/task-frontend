@@ -1,0 +1,36 @@
+ame: Deploy Angular Frontend to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Clonar repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Instalar Node
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      # 3️⃣ Instalar dependencias
+      - name: Install dependencies
+        run: npm ci
+
+      # 4️⃣ Build Angular (producción)
+      - name: Build Angular app
+        run: npm run build -- --configuration=production
+
+      # 5️⃣ Deploy a Firebase Hosting
+      - name: Deploy to Firebase Hosting
+        run: |
+          npm install -g firebase-tools
+          firebase deploy --only hosting --token "$FIREBASE_TOKEN"
