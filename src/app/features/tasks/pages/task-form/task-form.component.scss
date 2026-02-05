@@ -1,0 +1,26 @@
+.task-card {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.actions button:first-child {
+  margin-right: auto;
+}
