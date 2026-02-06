@@ -66,15 +66,17 @@ export class RegisterComponent {
    */
   register() {
     if (this.registerForm.invalid) return;
-
+    this.utils.showLoading();
     const { confirmPassword, ...data } = this.registerForm.value;
 
     this.authService.register(data).subscribe({
       next: () => {
+        this.utils.hideLoading();
         this.utils.openSnackBar('Usuario registrado correctamente');
         this.router.navigate(['/tasks']);
       },
       error: () => {
+        this.utils.hideLoading();
         this.utils.openSnackBar('Error al registrar usuario');
       },
     });
